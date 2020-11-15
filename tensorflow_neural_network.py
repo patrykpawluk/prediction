@@ -20,7 +20,7 @@ n_nodes_hl3 = 100
 
 n_classes = 2
 x_var = 29
-batch_size = 128
+batch_size = 256
 
 x = tf.placeholder(tf.float32, shape=(None, x_var))
 y = tf.placeholder(tf.float32, shape=(None, None))
@@ -103,9 +103,9 @@ def train_neural_network(x):
 
         accuracy = tf.reduce_mean(tf.cast(correct, 'float32'))
 
-        y_train_hot = tf.one_hot(y_train, depth=2)
-        y_train_hot_np = sess.run(y_train_hot)
+        y_test_hot = tf.one_hot(y_test, depth=2)
+        y_test_hot_np = sess.run(y_test_hot)
 
-        print('Accuracy:',accuracy.eval({x:X_train, y:y_train_hot_np}))
+        print('Accuracy:',accuracy.eval({x:X_test, y:y_test_hot_np}))
         
 train_neural_network(x)
