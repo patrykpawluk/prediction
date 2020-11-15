@@ -1,3 +1,13 @@
+import pandas as pd 
+import numpy as np
+import xgboost as xgb
+from sklearn.metrics import mean_squared_error
+
+#wczytanie danych do datasetu pandas
+dataset = pd.read_csv('./datasets/credit_card_frauds.csv',delimiter=",")
+y = dataset['Class']
+X = dataset.iloc[:,:-1]
+
 #train_test_split gotowa funkcja do podzielenia bazy do medelu na część trenującą i uczącą
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=123)
